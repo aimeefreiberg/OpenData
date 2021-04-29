@@ -1,0 +1,14 @@
+svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.country {
+  fill: #ccc;
+  stroke: #999;
+}
+
+.mouseeffect {
+  fill:#cccccc0d;
+}
