@@ -5,10 +5,25 @@
     <title>D3 World Map</title>
 
     <link rel="stylesheet" href="app.css">
-    
+    <style>
+      .container{
+          width: 250px;
+          height: 200px;
+          border: 1px solid #da1e1e;
+      }
+
+      .bar {
+          fill:  rgb(121, 37, 37);
+      }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-scale.v3.min.js"></script>
   </head>
   <body>
-      <h1>Land Elefant</h1>
-    <script type="text/javascript" src="laender.js"></script>
+    <h1 id="output"></h1>
+    <svg></svg>
+
+    
+    <script type="text/javascript" src="laender.js" defer></script>
   </body>
 </html>
