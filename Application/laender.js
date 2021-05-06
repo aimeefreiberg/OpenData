@@ -16,10 +16,11 @@ var yAxis = d3.svg.axis()
     .orient("left")
     .ticks(10);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("body")
+    .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+    .append("g")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
 
@@ -31,7 +32,7 @@ d3.csv("poverty_index_one.csv", function(error, data) {
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
-    .selectAll("text")
+      .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
       .attr("dy", "-.55em")
@@ -40,7 +41,7 @@ d3.csv("poverty_index_one.csv", function(error, data) {
   svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
-    .append("text")
+      .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".71em")
@@ -49,7 +50,7 @@ d3.csv("poverty_index_one.csv", function(error, data) {
 
   svg.selectAll("bar")
       .data(data)
-    .enter().append("rect")
+      .enter().append("rect")
       .style("fill", "steelblue")
       .attr("x", function(d) { return x(d.countries); })
       .attr("width", x.rangeBand())

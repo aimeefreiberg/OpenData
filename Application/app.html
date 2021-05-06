@@ -11,16 +11,33 @@
     <script src="https://d3js.org/topojson.v1.min.js"></script>
   </head>
   <body>
-    <h1>Klick auf ein Land!</h1>
-    <div class="form-group">
-      <select class="custom-select">
-        <option selected="">Wähle die Kategorien</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+    <nav class="navbar sticky-top navbar-expand-md bg-white navbar-dark">
+      <a class="navbar-brand" href="app.html">APP</a> 
+      <button class="navbar-toggler" type="button"> 
+        <span class="navbar-toggler-icon"></span> 
+      </button> 
+        <div class="collapse navbar-collapse"> 
+          <ul class="navbar-nav">
+            <li class="nav-item"> <a class="nav-link" href="visualisierung.html">Dokumentation</a> </li> 
+            <li class="nav-item"> <a class="nav-link" href="app.html">Quellen</a> </li> 
+            <li class="nav-item"> <a class="nav-link" href="app.html">Über Uns</a> </li> 
+          </ul> 
+        </div> 
+     </nav>
+    <div class="container">
+      <h1>Klick auf ein Land!</h1>
+      <div class="form-group card">
+        <select class="custom-select">
+          <option selected="">Wähle die Kategorien</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="card">
+        <svg></svg>
+      </div>
     </div>
-    
     <script type="text/javascript" src="app.js"></script>
   </body>
 </html>
