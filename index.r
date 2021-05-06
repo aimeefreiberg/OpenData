@@ -203,13 +203,171 @@ normalized_gini = normalize(gini_index)
 
 final_index_data = cbind(final_index_data, normalized_gini)
 
+##### gender equality data
+
+gender = read.table("gender_eq.csv", sep=",", header = TRUE, na.strings= "NaN")
+
+#extract last 5 years
+gender_5 = gender[, c("X2015", "X2016" ,"X2017", "X2018" ,"X2019")]
+
+gender_red = gender[, 2:56]
+
+
+#calc mean of last 5 years
+means = c()
+
+for(i in 1:length(countries)){
+	
+	my_mean = mean(as.numeric(gender_5[i, ]), na.rm = TRUE)
+	
+	means <- c(means, my_mean)
+	
+	}
+
+#fill not available data with most recent entry
+
+gender_equality  = cbind(countries, means)
+
+
+for(i in 1:length(countries)){
+	
+	if(gender_equality[i,2] == "NaN"){			
+		
+		for(j in 1:length(colnames(gender_red))){
+
+			if(!is.na(gender_red[i, j])){
+				gender_equality[i,2] = gender_red[i, j]
+			}
+			
+		}
+	}
+	
+}
+
+#find mean and replace missing values
+
+the_mean = as.numeric(gender_equality[, 2])
+this_one = the_mean[!is.na(the_mean)]
+wanted_mean = mean(this_one) #3.302096
+
+gender_eq = as.numeric(gender_equality[,2])
+
+#replace NA with average mean
+
+for(i in 1:length(countries)){
+	
+	if(is.na(gender_eq[i])){
+	
+		gender_eq[i] = wanted_mean	
+		
+	}
+	
+}
+
+normalized_gender_eq = normalize(gender_eq)
+
+#set for 1 meaning most unequal - 0 most equal
+
+for(i in 1:length(countries)){
+
+	normalized_gender_eq[i] = 1 - normalized_gender_eq[i]
+	
+}
+
+final_index_data = cbind(final_index_data, normalized_gender_eq)
+
+
+#### children education data
+
+child_ed = read.table("children_school.csv", sep=",", header = TRUE, na.strings= "NaN")
+
+#extract last 5 years
+child_5 = child_ed[, c("X2015", "X2016" ,"X2017", "X2018" ,"X2019")]
+
+child_red = child_ed[, 2:56]
+
+means = c()
+
+for(i in 1:length(countries)){
+	
+	my_mean = mean(as.numeric(child_5[i, ]), na.rm = TRUE)
+	
+	means <- c(means, my_mean)
+	
+	}
+
+#fill not available data with most recent entry
+
+child_education = cbind(countries, means)
+
+
+for(i in 1:length(countries)){
+	
+	if(child_education[i,2] == "NaN"){			
+		
+		for(j in 1:length(colnames(child_red))){
+
+			if(!is.na(child_red[i, j])){
+				child_education[i,2] = child_red[i, j]
+			}
+			
+		}
+	}
+	
+}
+
+#find mean and replace missing values
+
+the_mean = as.numeric(child_education[, 2])
+this_one = the_mean[!is.na(the_mean)]
+wanted_mean = mean(this_one) #2994436
+
+children = as.numeric(child_education[,2])
+
+#replace NA with average mean
+
+for(i in 1:length(countries)){
+	
+	if(is.na(children[i])){
+	
+		children[i] = wanted_mean	
+		
+	}
+	
+}
+
+normalized_child_ed = normalize(children)
+
+final_index_data = cbind(final_index_data, normalized_child_ed)
 
 ######calculation of index
 
-index = 2*as.numeric(final_index_data[,2]) + as.numeric(final_index_data[, 3]) + as.numeric(final_index_data[, 4])
+### standard index
+index = 2*as.numeric(final_index_data[,"normalized_pov_mean"]) + as.numeric(final_index_data[, "normalized_busi"]) + as.numeric(final_index_data[, "normalized_gini"]) + as.numeric(final_index_data[, "normalized_gender_eq"]) + as.numeric(final_index_data[, "normalized_child_ed"])
 
-#normalize index deom 0-10
+### focus gender eq
+
+index = 2*as.numeric(final_index_data[,"normalized_pov_mean"]) + as.numeric(final_index_data[, "normalized_busi"]) + as.numeric(final_index_data[, "normalized_gini"]) + 2*as.numeric(final_index_data[, "normalized_gender_eq"]) + as.numeric(final_index_data[, "normalized_child_ed"])
+
+
+### focus education
+
+index = 2*as.numeric(final_index_data[,"normalized_pov_mean"]) + as.numeric(final_index_data[, "normalized_busi"]) + as.numeric(final_index_data[, "normalized_gini"]) + as.numeric(final_index_data[, "normalized_gender_eq"]) + 2*as.numeric(final_index_data[, "normalized_child_ed"])
+
+
+#normalize index from 0-10
 
 normalized_index = normalize(gini_index)*10
 
-index_data = cbind(countries, gini[,2],normalized_index)
+#combine importan info and export 
+
+country_code = unlist(as.character(gini[,"Country.Code"]))
+
+index_data = cbind(countries, country_code,normalized_index)
+
+###### export index data
+
+final_index_data = cbind(final_index_data[,1], country_code, final_index_data[, 2:6])
+
+write.csv(final_index_data, "poverty_index_data")
+#write.csv(index_data, "poverty_index_one.csv")
