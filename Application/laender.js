@@ -1,32 +1,59 @@
-var c = document.getElementById('output');
-var para = new URLSearchParams(window.location.search);
-var country = para.get("KEY");
-c.textContent=country;
+var margin = {top: 20, right: 20, bottom: 70, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
-const DATA = [
-    { id: 'd1', value:10, region: 'USA'},
-    { id: 'd2', value:11, region: 'Russia'},
-    { id: 'd3', value:12, region: 'UK'},
-    { id: 'd4', value:13, region: 'Germ'},
-    { id: 'd5', value:15, region: 'Deutsch'},
-];
-    
-const xScale = d3.scaleBand()
-                .domain(DATA.map((dataPoint) => dataPoint.region))
-                .rangeRound([0, 250])
-                .padding(0.1);
-const yScale = d3.scaleLinear().domain([0,15]).range([200,0]);
 
-const container = d3.select('svg')
-    .classed('container',true)
+var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
 
-container
-    .selectAll('.bar')
-    .data(DATA)
-    .enter()
-    .append('rect')
-    .classed('bar', true)
-    .attr('width',xScale.bandwidth())
-    .attr('height',(data) => 200-yScale(data.value))
-    .attr('x',data => xScale(data.region))
-    .atrr('y',data => yScale(data.value));
+var y = d3.scale.linear().range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("poverty_index_one.csv", function(error, data) {
+  x.domain(data.map(function(d) { return d.countries; }));
+  y.domain([0, d3.max(data, function(d) { return d.data; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", "-.55em")
+      .attr("transform", "rotate(-90)" );
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("data");
+
+  svg.selectAll("bar")
+      .data(data)
+    .enter().append("rect")
+      .style("fill", "steelblue")
+      .attr("x", function(d) { return x(d.countries); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.data); })
+      .attr("height", function(d) { return height - y(d.data); });
+});
+
