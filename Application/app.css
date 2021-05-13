@@ -1,7 +1,7 @@
 
 svg {
-  position: absolute;
-  left: 50%;
+  position:relative;
+  left: 40%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
@@ -12,4 +12,12 @@ svg {
 
 .mouseeffect {
   fill:#cccccc0d;
+}
+
+#ex1Slider .slider-selection {
+	background: #BABABA;
+}
+
+.container-fluid{
+  background-color: rgb(199, 224, 224);
 }

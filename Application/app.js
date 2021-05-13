@@ -1,15 +1,16 @@
+//Worldmap 
 
 const width = 900;
 const height = 600;
 
-
-const svg = d3.select('body')
+const svg = d3.select('#worldmap')
+            .attr('viewBox','0 0 900 600')
             .append('svg')
             .attr('width', width)
             .attr('height', height);
 
-const projection = d3.geoMercator().scale(140)
-                     .translate([width / 2, height / 1.4]);
+const projection = d3.geoMercator().scale(120)
+                     .translate([width / 2, height/1.3]);
                      
 const path = d3.geoPath(projection)
 
@@ -38,3 +39,23 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
                 location.href  = url+para.toString();
             });
     });
+
+//Select input
+var select = document.getElementById("select");
+var select_input = document.getElementById("select_input");
+select_input.innerHTML = select.value; 
+
+select.oninput = function() {
+    select_input.innerHTML = this.value;
+}
+
+//Slider
+var slider1 = document.getElementById("score");
+var score = document.getElementById("numb");
+score.innerHTML = slider1.value; 
+
+slider1.oninput = function() {
+    score.innerHTML = this.value;
+}
+
+

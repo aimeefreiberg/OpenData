@@ -1,3 +1,9 @@
+var c = document.getElementById('country_name');
+var para = new URLSearchParams(window.location.search);
+var country = para.get("KEY");
+
+c.textContent=country;
+
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
     width = 600 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
