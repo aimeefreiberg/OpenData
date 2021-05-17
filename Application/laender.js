@@ -5,8 +5,8 @@ var country = para.get("KEY");
 c.textContent=country;
 
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
-    width = 600 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    width = 3000 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
 
 var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
@@ -22,7 +22,7 @@ var yAxis = d3.svg.axis()
     .orient("left")
     .ticks(10);
 
-var svg = d3.select("body")
+var svg = d3.select("#bar")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -63,4 +63,3 @@ d3.csv("poverty_index_one.csv", function(error, data) {
       .attr("y", function(d) { return y(d.data); })
       .attr("height", function(d) { return height - y(d.data); });
 });
-

@@ -57,5 +57,6 @@ score.innerHTML = slider1.value;
 slider1.oninput = function() {
     score.innerHTML = this.value;
 }
-
+var button1 = document.getElementById("button1");
+// Index Data
 
