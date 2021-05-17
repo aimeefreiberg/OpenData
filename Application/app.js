@@ -40,23 +40,31 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
             });
     });
 
-//Select input
-var select = document.getElementById("select");
-var select_input = document.getElementById("select_input");
-select_input.innerHTML = select.value; 
+// Index Implementierung
 
-select.oninput = function() {
-    select_input.innerHTML = this.value;
+var index_array = [1,1,1,1,1];
+
+function decrease(obj){
+    var value=document.getElementById("index"+obj).value;
+    value--;
+    document.getElementById("index"+obj).value = value;
+    index_array[parseInt(obj)]=value;
+    hey();
+}
+function increase(obj){
+    var value=document.getElementById("index"+obj).value;
+    value++;
+    document.getElementById("index"+obj).value = value;
+    index_array[parseInt(obj)]=value;
+    hey();
 }
 
-//Slider
-var slider1 = document.getElementById("score");
-var score = document.getElementById("numb");
-score.innerHTML = slider1.value; 
-
-slider1.oninput = function() {
-    score.innerHTML = this.value;
+function hey(){
+    var c_index = document.getElementById("curr_index");
+    c_index.innerHTML = index_array[0] +"x Armut + "+index_array[1]+"x Armut + "+index_array[2]+"x Armut + "+index_array[3]+"x Armut + "+index_array[4]+"x Armut "; 
 }
-var button1 = document.getElementById("button1");
-// Index Data
+
+//Index Data
+var data= d3.csv("poverty_index_one.csv");
+console.log(data);
 

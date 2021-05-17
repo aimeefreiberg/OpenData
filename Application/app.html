@@ -28,38 +28,66 @@
       <div class="container-fluid m-3 py-2">
         <div class="row">
           <div class="col-lg-3 py-5">
-            <!-- Auswhl Themen -->
-            <div class="form-group card">
-              <select class="custom-select" id="select">
-                <option selected >Wähle die Kategorien</option>
-                <option value="Armut" >Armut</option>
-                <option value="Gini-Koeffizient">Gini-Koeffizient</option>
-                <option value="Ease Of Business">Ease Of Business</option>
-              </select>
-            </div>
-            <!-- Eingabe Index -->
-            <div class="card my-3 px-3">
-              <p id="select_input"></p>
-            </div>
-            <div class="col-lg-2">
-              <div class="input-group">
-                <span class="input-group-btn">
-                  <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
-                    <span class="glyphicon glyphicon-minus"></span>
+            <form>
+              <!--INDEX BUTTON  0 -->
+              <div class="input-group p-2">
+                <button type="button" onclick="decrease('0')"  class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field=""> 
+                    <span class="glyphicon glyphicon-minus"></span>  <!-- Minuszeichen -->
                   </button>
-                </span>
-                <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="0" max="10">
-                <span class="input-group-btn">
-                  <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
-                    <span class="glyphicon glyphicon-plus"></span>
+                <input type="number" id="index0" class="form-control input-number" value="1" min="0" max="10">
+                  <button type="button" onclick="increase('0')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                    <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
                   </button>
-                </span>
-              </div>
-            </div>    
-            <!-- SLIDER -->
-            0 <input type="range" min="0" max="1" step="0.05" value="1" class="slider" id="score"> 1
+                  <h4 class="mx-2">Armut</h4>
+              </div>  
+              <!--INDEX BUTTON  1 -->
+              <div class="input-group p-2">
+                <button type="button" onclick="decrease('1')"  class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field=""> 
+                    <span class="glyphicon glyphicon-minus"></span>  <!-- Minuszeichen -->
+                  </button>
+                <input type="number" id="index1" class="form-control input-number" value="1" min="0" max="10">
+                  <button type="button" onclick="increase('1')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                    <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
+                  </button>
+                  <h4 class="mx-2">Armut</h4>
+              </div>  
+              <!--INDEX BUTTON  2 -->
+              <div class="input-group p-2">
+                <button type="button" onclick="decrease('2')"  class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field=""> 
+                    <span class="glyphicon glyphicon-minus"></span>  <!-- Minuszeichen -->
+                  </button>
+                <input type="number" id="index2" class="form-control input-number" value="1" min="0" max="10">
+                  <button type="button" onclick="increase('2')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                    <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
+                  </button>
+                  <h4 class="mx-2">Armut</h4>
+              </div>  
+              <!--INDEX BUTTON  3 -->
+              <div class="input-group p-2">
+                <button type="button" onclick="decrease('3')"  class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field=""> 
+                    <span class="glyphicon glyphicon-minus"></span>  <!-- Minuszeichen -->
+                  </button>
+                <input type="number" id="index3" class="form-control input-number" value="1" min="0" max="10">
+                  <button type="button" onclick="increase('3')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                    <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
+                  </button>
+                  <h4 class="mx-2">Armut</h4>
+              </div>  
+              <!--INDEX BUTTON  4 -->
+              <div class="input-group p-2">
+                <button type="button" onclick="decrease('4')"  class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field=""> 
+                    <span class="glyphicon glyphicon-minus"></span>  <!-- Minuszeichen -->
+                  </button>
+                <input type="number" id="index4" class="form-control input-number" value="1" min="0" max="10">
+                  <button type="button" onclick="increase('4')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                    <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
+                  </button>
+                  <h4 class="mx-2">Armut</h4>
+              </div>  
+            </form>
+            <!-- Current Index -->
             <div class="card my-3 px-3">
-              <p>Aktueller Wert: <h7 id="numb"></h7> </p>
+              <p><h4 id="curr_index">2x Armut + 1x Armut + 1x Armut + 1x Armut + 1x Armut</h4> </p>
             </div>
             <button  class="btn btn-secondary">Zeig an</button>
           </div>
@@ -69,7 +97,6 @@
         </div>
       </div>
     </main>
-
     <script type="text/javascript" src="app.js"></script>
   </body>
 </html>
