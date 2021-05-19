@@ -24,7 +24,7 @@ function increase(obj){
 function update_IndexOutput(){
     var c_index = document.getElementById("curr_index");
     c_index.innerHTML = index_array[0] +"x Poverty + "+index_array[1]+"x Ease of Business + "
-        +index_array[2]+"x Gini + "+index_array[3]+"x Gender Equality + "//+index_array[4]+"x Child Education"; 
+        +index_array[2]+"x Gini + "+index_array[3]+"x Gender Equality"//+index_array[4]+"x Child Education"; 
 }
 
 function update_map(){
@@ -75,21 +75,22 @@ function coloring_country(calculated_index){
 
 //Worldmap 
 
-const width = 900;
-const height = 600;
+const width = 3000;
+const height = 1200;
 
 const svg = d3.select('#worldmap')
-            .attr('viewBox','0 0 900 600')
             .append('svg')
             .attr('width', width)
-            .attr('height', height);
+            .attr('height', height)
 
-const projection = d3.geoMercator().scale(120)
+const projection = d3.geoMercator().scale(150)
                      .translate([width / 2, height/1.3]);
                      
 const path = d3.geoPath(projection)
 
-const g = svg.append('g');
+const g = svg.append('g')
+            .attr('viewBox','0 0 3000 1200')
+            .classed("svg-content", true);
 
 //Länder Index Data
 

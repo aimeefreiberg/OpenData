@@ -13,24 +13,23 @@
   <body>
     <main>
       <!-- Navigation -->
-      <div class="navbar navbar-light ">
+      <!-- <div class="navbar navbar-light ">
         <nav class="nav d-flex justify-content-between">
           <a class="p-2 link-secondary" href="#">Home</a>
           <a class="p-2 link-secondary" href="#">App</a>
           <a class="p-2 link-secondary" href="#">Anleitung</a>
           <a class="p-2 link-secondary" href="#">Daten</a>
         </nav>
-      </div>
-
+      </div> -->
+      <!-- Die Weltkarte -->
       <div class="container-fluid m-3 py-2">
         <h1>Klick auf ein Land!</h1>
       </div>
       <div class="container-fluid m-3 py-2">
+        <div class="svg-container" id="worldmap">
+        </div>
         <div class="row">
-          <!-- Die Weltkarte -->
-          <div  id="worldmap">
-          </div>
-          <div class="py-5">
+          <div class="col-sm py-5">
             <form>
               <!--INDEX BUTTON  0 -->
               <div class="input-group p-2">
@@ -88,13 +87,12 @@
                   <h4 class="mx-2">Child Education</h4>
               </div>  
             </form>
-            <!-- Current Index -->
-            <div class="card my-3 px-3">
-              <p><h4 id="curr_index">2x Poverty + 1x Ease of Business + 1x Gini + 1x Gender Equaltity + 1x Child Education</h4> </p>
-            </div>
-            <!-- <button  class="btn btn-secondary">Zeig an</button> Bis jetzt nicht nötig-->
           </div>
-
+          <!-- Current Index -->
+          <div class="col-sm card m-5 p-5">
+            <p><h4 id="curr_index">2x Poverty + 1x Ease of Business + 1x Gini + 1x Gender Equaltity + 1x Child Education</h4> </p>
+          </div>
+          <!-- <button  class="btn btn-secondary">Zeig an</button> Bis jetzt nicht nötig-->
         </div>
       </div>
     </main>
