@@ -27,7 +27,10 @@
       </div>
       <div class="container-fluid m-3 py-2">
         <div class="row">
-          <div class="col-lg-3 py-5">
+          <!-- Die Weltkarte -->
+          <div  id="worldmap">
+          </div>
+          <div class="py-5">
             <form>
               <!--INDEX BUTTON  0 -->
               <div class="input-group p-2">
@@ -38,7 +41,7 @@
                   <button type="button" onclick="increase('0')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                     <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
                   </button>
-                  <h4 class="mx-2">Armut</h4>
+                  <h4 class="mx-2">Poverty</h4>
               </div>  
               <!--INDEX BUTTON  1 -->
               <div class="input-group p-2">
@@ -60,7 +63,7 @@
                   <button type="button" onclick="increase('2')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                     <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
                   </button>
-                  <h4 class="mx-2">Armut</h4>
+                  <h4 class="mx-2">Gini</h4>
               </div>  
               <!--INDEX BUTTON  3 -->
               <div class="input-group p-2">
@@ -71,7 +74,7 @@
                   <button type="button" onclick="increase('3')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                     <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
                   </button>
-                  <h4 class="mx-2">Armut</h4>
+                  <h4 class="mx-2">Gender Equality</h4>
               </div>  
               <!--INDEX BUTTON  4 -->
               <div class="input-group p-2">
@@ -82,18 +85,16 @@
                   <button type="button" onclick="increase('4')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                     <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
                   </button>
-                  <h4 class="mx-2">Armut</h4>
+                  <h4 class="mx-2">Child Education</h4>
               </div>  
             </form>
             <!-- Current Index -->
             <div class="card my-3 px-3">
-              <p><h4 id="curr_index">2x Armut + 1x Ease of Business + 1x Armut + 1x Armut + 1x Armut</h4> </p>
+              <p><h4 id="curr_index">2x Poverty + 1x Ease of Business + 1x Gini + 1x Gender Equaltity + 1x Child Education</h4> </p>
             </div>
-            <button  class="btn btn-secondary">Zeig an</button>
+            <!-- <button  class="btn btn-secondary">Zeig an</button> Bis jetzt nicht nötig-->
           </div>
-          <!-- Die Weltkarte -->
-          <div class="col-lg-9" id="worldmap">
-          </div>
+
         </div>
       </div>
     </main>
