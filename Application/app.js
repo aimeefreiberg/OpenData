@@ -22,6 +22,36 @@ function hey(){
     c_index.innerHTML = index_array[0] +"x Armut + "+index_array[1]+"x Ease of Business + "+index_array[2]+"x Armut + "+index_array[3]+"x Armut + "+index_array[4]+"x Armut "; 
 }
 
+
+function create_index(pov,name){  ////Finde die richtigen Länder aus den Datensets
+    var specific_index=0;
+    var uncal_index = pov.filter(word => word.country_name===name);
+    console.log("Pov2 "+ pov.length);
+    //console.log("Worldmap Ländername "+ name);
+    //console.log("Läange "+ uncal_index.length);
+    if(uncal_index.length==0){
+        specific_index=0;
+    }else{
+        specific_index=updateData(uncal_index[0]);;
+        console.log("Index Ländername "+uncal_index[0].country_name);
+        console.log("End Index:  "+specific_index.toFixed(2));
+    }
+    return specific_index;
+}
+    
+
+function updateData(index){
+    var sum=index_array[0]+index_array[1];
+    return 10*(index.normalized_pov_mean*index_array[0]+index.normalized_busi*index_array[1])/sum;
+}
+
+function coloring_country(calculated_index){
+    var num2=255/10*calculated_index
+    num2.toFixed(0);
+    var num1=255-num2;
+    return num1+","+num2+","+0;
+}
+
 //Worldmap 
 
 const width = 900;
@@ -40,41 +70,19 @@ const path = d3.geoPath(projection)
 
 const g = svg.append('g');
 
+//Länder Index Data
 
-function create_index(pov,eob,name){  ////Finde die richtigen Länder aus den Datensets
-    var specific_index;
-    const pov_result = pov.filter(word => word.countries===name);
-    const eob_result = pov.filter(word => word.country_code===pov_result[0].country_code);
-    console.log("Finde "+ name);
-    console.log("resultat "+pov_result[0].countries+" Länge "+pov_result.length);
-    console.log("resultat "+eob_result[0].country_code+" data "+eob_result[0].data_2019+" Länge "+eob_result.length);
-    specific_index=updateData(pov_result[0].data,eob_result[0].data_2019);
-    console.log("End Index:  "+specific_index);
-}
-
-function updateData(pov,eas){
-    var sum=index_array[0]+index_array[1];
-    return (pov*index_array[0]+eas*index_array[1])/sum;
-}
-
+//Poverty Index Array
+var pov_arr=[];
+d3.csv("poverty_index_data.csv")
+    .then(data => {
+    pov_arr=data;
+});
 
 d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')          //Länder Daten von JSON variable g genommmen
     .then(data => {
-        //Länder Index Data
 
-        //Poverty Index Array
-        var pov_arr=[];
-        d3.csv("poverty_index_one.csv")
-            .then(data => {
-            pov_arr=data;
-        });
 
-        //Ease Of Bus Index Array
-        var eob_arr=[];
-        d3.csv("ease_buis.csv")
-            .then(data => {
-                eob_arr=data;
-        });
 
         //Die Weltkarte
         const countries = topojson.feature(data, data.objects.countries); //Alle Länder
@@ -82,26 +90,35 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')       
             .data(countries.features)
             .enter()
             .append('path')
-            //.style('fill','blue')
-            .attr('class', 'country')
-            .attr('d', path)    //'d' is list of coordinates
-            .on('mouseover', function(d){
-                d3.select(this)
-                    .classed("mouseeffect",true)
-                    .text(function(d) { return d.properties.name; });	
-                    //.style('fill','blue');
-                create_index(pov_arr,eob_arr,d.properties.name);
-            })
-            .on('mouseout', function(d){
-                d3.select(this)
-                    .classed("mouseeffect",false)
-            })
-            .on("click", function(d){
-                var para = new URLSearchParams();
-                para.append("KEY",d.properties.name);
-                var url = 'laender.html?';
-                location.href  = url+para.toString();
-            });
+                .attr('class', 'country')
+                .attr('d', path)    //'d' is list of coordinates
+                //.text(d =>  d.properties.name)
+                .style('fill',function(d) {
+                    console.log("Pov1 "+ pov_arr.length);
+                    var ind=create_index(pov_arr,d.properties.name);
+                    console.log("Index Nummer: "+ind);
+                    return 'rgb('+coloring_country(ind)+')';   //  rgb(coloring_country(1))
+                    //return 'rgb(25,229,0)'
+                    }
+                )
+                .on('mouseover', function(d){
+                    d3.select(this)
+                        .classed("mouseeffect",true)	
+                        //.style('fill','blue');
+                    //create_index(pov_arr,d.properties.name);
+                    console.log("Pov3 "+ pov_arr.length);
+                    //console.log("name "+d.properties.name);
+                })
+                .on('mouseout', function(d){
+                    d3.select(this)
+                        .classed("mouseeffect",false)
+                })
+                .on("click", function(d){
+                    var para = new URLSearchParams();
+                    para.append("KEY",d.properties.name);
+                    var url = 'laender.html?';
+                    location.href  = url+para.toString();
+                })     
     });
 
 
