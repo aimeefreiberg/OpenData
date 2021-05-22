@@ -1,14 +1,25 @@
 var c = document.getElementById('country_name');
 var para = new URLSearchParams(window.location.search);
 var country = para.get("KEY");
-
 c.textContent=country;
+
 
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
     width = 3000 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 
+
+
+d3.csv("poverty_index_data.csv", function(error, data) {
+    x.domain(data.map(function(d) { return d.countries; }));
+    y.domain([0, d3.max(data, function(d) { return d.data; })]);
+    var maxDate;
+    var minDate;
+    var maxY=d3.max(date,function(d){ return d.})
+
+});
+/*
 var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
 var y = d3.scale.linear().range([height, 0]);
 
@@ -29,7 +40,7 @@ var svg = d3.select("#bar")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("poverty_index_one.csv", function(error, data) {
+d3.csv("poverty_index_data.csv", function(error, data) {
   x.domain(data.map(function(d) { return d.countries; }));
   y.domain([0, d3.max(data, function(d) { return d.data; })]);
 
@@ -62,3 +73,4 @@ d3.csv("poverty_index_one.csv", function(error, data) {
       .attr("y", function(d) { return y(d.data); })
       .attr("height", function(d) { return height - y(d.data); });
 });
+*/

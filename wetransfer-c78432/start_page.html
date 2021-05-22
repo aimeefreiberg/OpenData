@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>
+			The Povedex
+		</title>
+		
+		<link rel= "stylesheet" href = "style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+
+		
+	</head>
+	
+	<body>
+	
+		<!-- background video -->
+		
+		<div class="fullscreen-bg">
+		<video loop muted autoplay class="fullscreen-bg__video" 			
+		style = "position: absolute; top: 0%; left: 50%; width: 100%; height: 100%"
+		source src="intro_povedex.mp4" type="video/mp4">
+		</video>
+		</div>
+
+		<!--buttons for index and info -->
+		
+		<a href="index_page.html"><button id = "index_button" style="display:none">plan your <br/> investment</button></a>
+		
+		<a href="info_page.html"><button id = "info_button" style="display:none">how the index <br/> was created</button></a>
+
+
+		<a href="about_us.html" id = "about_us_link_appear" style="display:none">About us </p></a>
+		
+		<script type="text/javascript">
+		function showindex() { 
+    	document.getElementById("index_button").style.display= "inline"; 
+		}
+  		
+  		setTimeout("showindex()", 18000);
+		
+		
+  		function showinfo() { 
+    	document.getElementById("info_button").style.display= "inline"; 
+		}
+  		
+  		setTimeout("showinfo()", 18000);
+  		
+  		function showAboutUs() { 
+    	document.getElementById("about_us_link_appear").style.display= "inline"; 
+		}
+  		
+  		setTimeout("showAboutUs()", 18000);
+  		</script>	
+		
+	</body>
+</html>
