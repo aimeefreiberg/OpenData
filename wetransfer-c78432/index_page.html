@@ -1,0 +1,136 @@
+<html> 
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="stylesheet" href="app.css">
+		<link rel= "stylesheet" href = "style.css">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src = "/path/to/d3.min.js"></script>
+		
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    
+    	<script src="https://d3js.org/d3.v5.min.js"></script>
+    	<script src="https://d3js.org/topojson.v1.min.js"></script>
+		
+		<title>
+			The Povedex
+		</title>
+	</head>
+	<body>
+			
+		<center><img src = "logo.PNG" class = "logo_img"></center>
+		
+		
+		
+		<a href = "start_page.html"><button class = "start_nav">back to the <br/>starting page</button></a>	
+		<a href = "info_page.html"><button class = "index_nav">how the index <br/> was created</button></a>
+		
+		<main>
+      <!-- Navigation -->
+      <!-- <div class="navbar navbar-light ">
+        <nav class="nav d-flex justify-content-between">
+          <a class="p-2 link-secondary" href="#">Home</a>
+          <a class="p-2 link-secondary" href="#">App</a>
+          <a class="p-2 link-secondary" href="#">Anleitung</a>
+          <a class="p-2 link-secondary" href="#">Daten</a>
+        </nav>
+      </div> -->
+      <!-- Die Weltkarte -->
+      <div class="container-fluid m-3 py-2">
+        <div class="svg-container" id="worldmap">
+        </div>
+        <div class="row">
+          <div class="col-sm py-5">
+            <form>
+              <!--INDEX BUTTON  3 -->
+              <div class="input-group p-2">
+                <button type="button" onclick="decrease('3')"  class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field=""> 
+                    <span class="glyphicon glyphicon-minus"></span>  <!-- Minuszeichen -->
+                  </button>
+                <input type="number" id="index3" class="form-control input-number" value="1" min="0" max="10">
+                  <button type="button" onclick="increase('3')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                    <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
+                  </button>
+                  <h4 class="mx-2">Gender Equality</h4>
+              </div>  
+              <!--INDEX BUTTON  4 -->
+              <div class="input-group p-2">
+                <button type="button" onclick="decrease('4')"  class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field=""> 
+                    <span class="glyphicon glyphicon-minus"></span>  <!-- Minuszeichen -->
+                  </button>
+                <input type="number" id="index4" class="form-control input-number" value="1" min="0" max="10">
+                  <button type="button" onclick="increase('4')" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                    <span class="glyphicon glyphicon-plus"></span>  <!-- Pluszeichen -->
+                  </button>
+                  <h4 class="mx-2">Child Education</h4>
+              </div>  
+            </form>
+          </div>
+          <!-- <button  class="btn btn-secondary">Zeig an</button> Bis jetzt nicht nötig-->
+        </div>
+      </div>
+    </main>
+    <script type="text/javascript" src="app.js"> </script>
+
+		</br>
+		<table class = "invest_table">
+		<tr> 
+			<td class = "index_table_topic" >
+				choose your <br/> investment priority
+
+			</td>
+			<td class = "table_button">
+
+				<a href = "https://data.worldbank.org/indicator/SI.POV.NAHC?name_desc=false&view=map&year_high_desc=true"><button class = "investment_button">Gender Equality</button></a>							
+				<a href = "https://data.worldbank.org/indicator/SI.POV.NAHC?name_desc=false&view=map&year_high_desc=true"><button class = "investment_button">Child Education</button></a></br></br>							
+				<a href = "https://data.worldbank.org/indicator/SI.POV.NAHC?name_desc=false&view=map&year_high_desc=true"><button class = "investment_button">No Priority</button></a>								
+
+			</td>
+		</tr>
+		</table>
+		
+		<table id = "invest_line">
+		<tr><td>
+		<h1>Investment and the Influence  </br>  on Poverty </h1>
+		</td><tr>
+		</table>
+		
+		
+		<script>
+        chart = {
+  		const svg = d3.create("svg")
+      					.attr("viewBox", [0, 0, width, height])
+      					.style("overflow", "visible");
+						  
+
+  		svg.append("g")
+      	.call(xAxis);
+
+  		svg.append("g")
+      	.call(yAxis);
+
+  		const path = svg.append("g")
+      	.attr("fill", "none")
+      	.attr("stroke", "steelblue")
+      	.attr("stroke-width", 1.5)
+      	.attr("stroke-linejoin", "round")
+      	.attr("stroke-linecap", "round")
+    	.selectAll("path")
+    	.data(data.series)
+    	.join("path")
+      	.style("mix-blend-mode", "multiply")
+      	.attr("d", d => line(d.values));
+
+  		svg.call(hover, path);
+
+  		return svg.node();
+		}
+      	</script>
+		
+
+		
+	</body>
+</html>
