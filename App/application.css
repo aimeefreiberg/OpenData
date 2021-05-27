@@ -1,0 +1,335 @@
+/*-------------------------------------------------------------Startseite-----------------------------------------------------------*/ 
+
+body {background-color: #e7c496}
+h1 {color: white;
+	font-family: "American Typewriter", serif;
+	font-size:40px;
+	text-align: center;
+	} 
+h2 {color: white;
+	font-family: "American Typewriter", serif;
+	font-size:35px;
+	text-align: center;
+	margin-left: 15%;
+	margin-right: 15%; }
+h3 {color: white;
+	font-family: "American Typewriter", serif;
+	text-align: center;
+	font-size:30px;
+	margin-left: 15%;
+	margin-right: 15%;}
+p {	color: white;
+	font-family: serif;
+	font-size:25px;
+	text-align: justify;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	margin-left: 15%;
+  	margin-right: 15%;}
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:0
+}
+button {
+  font-family: "American Typewriter", serif;
+  margin: auto; 
+  background: transparent;
+  color: white;
+  border: 4px solid white;
+  transition-duration: 0.4s;
+}
+button:hover {
+	
+	background-color: white;
+	color: #e0cca1;
+}
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+/* start page buttons */
+#info_button {
+	font-size: 50px;
+	position:absolute;
+    bottom: 25%;
+    right:-30%;
+}
+#index_button {
+	font-size: 50px;
+	position:absolute;
+    bottom: 25%;
+    right:5%;
+}
+#about_us_link_appear{
+	position:absolute;
+	right: -650px;
+	top: 92%;
+	color: white;
+	font-family:"American Typewriter", serif;
+	font-size:40px;
+	font-weight:bold;
+	text-align: justify;
+	}
+
+/*----------------------------------------------------------------info page styling---------------------------------------------*/
+.logo_img {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+ 			width : 55%;
+ 			top: 5%;
+ 			padding-bottom: 1%;
+}
+.source_button{
+	font-size: 25px;
+	text-align: center;
+}
+.start_nav{
+	font-size: 30px;
+	position:absolute;
+    transition: .5s ease;
+    left: 30%;
+	
+}
+.index_nav{
+	font-size: 30px;
+	position:absolute;
+    transition: .5s ease;
+    left: 55%;
+}
+#intro {
+	padding-left: 5%;
+	padding-right: 5%;
+	border-bottom: 4px solid white;
+
+}
+.end {
+	border-bottom: 4px solid white;
+}
+.about_us_link{
+	position:absolute;
+	right: 20%;
+	color: white;
+	font-family: "American Typewriter", serif;
+	font-size:40px;
+	text-align: right;
+	padding-bottom: 3%;
+	}
+/* table styling info page */
+table{
+	width: 70%;
+	margin-left: auto;
+  	margin-right: auto;
+  	table-layout:fixed;
+}
+td{
+	padding-left: 5%;
+	padding-right: 5%;
+}
+.table_topic{
+	color: white;
+	font-family: "American Typewriter", serif;
+	text-align: center;
+	font-size:30px;
+	font-weight: bold;
+	width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.table_info{
+	color: white;
+	font-family: "American Typewriter", serif;
+	text-align: justify;
+	font-size:25px;
+	border-left: 4px solid white;
+	
+}
+.table_info_bare{
+	color: white;
+	font-family: "American Typewriter", serif;
+	text-align: center;
+	font-size:25px;
+}
+.table_info_bare_header{
+	color: white;
+	font-family: "American Typewriter", serif;
+	text-align: center;
+	font-size:40px;
+	font-weight: bold;
+	padding-bottom: 2%;
+	}
+.info_link{	
+	color: white;
+	font-family: serif;
+	font-size:25px;
+	font-weight: bold;
+	}
+.source{
+	border-bottom: 4px solid white;
+	padding-bottom: 20%;
+	text-align: center;
+}
+/*About us page */
+.logo_img_small{
+			display: block;
+ 			width : 40%;
+ 			top: 5%;
+ 			padding-bottom: 1%;
+}
+#about_header{
+		font-size: 40px; 
+	}
+.photo_person{
+		width: 100%;
+		text-align: center;
+}
+.about_table{
+		width: 100%;
+		margin-left: auto;
+  		margin-right: auto;
+  		text-align: center;
+	}
+.source_end{
+	margin-top: 0%;
+	border-bottom: 4px solid white;
+	text-align: center;
+}
+.source_button_end{
+	font-size: 25px;
+	text-align: center;
+	margin-left: 3%;
+	margin-right: 3%;
+}	
+/*index page*/
+.fillter_img {
+			display: block;
+ 			width : 95%;
+}	
+.index_table_topic{
+	color: white;
+	font-family: "American Typewriter", serif;
+	text-align: center;
+	font-size:30px;
+	font-weight: bold;
+	width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.invest_table{
+	width: 77%;
+	margin-left: auto;
+  	margin-right: auto;
+  	text-align: center;
+}
+#invest_line{
+		margin-top: 5%;
+		padding-top: 2%;
+		border-top: 4px solid white;
+		width: 90%; 
+}
+.investment_button{
+	font-size: 30px;
+	text-align: center;
+	color: white;
+	font-family: "American Typewriter", serif;
+	font-size:40px;
+	text-align: center;
+	margin-top: 2%;
+}
+.table_button{
+	color: white;
+	font-family: "American Typewriter", serif;
+	text-align: center;
+	font-size:25px;
+	border-left: 4px solid white;
+}
+/*--------------------------------------------------------------------index Page second styling-------------------------------------------------------------------------*/
+.container-fluid{
+  background-color: #e7c496;
+}
+svg {
+	position:relative;
+	left: 40%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.country {
+fill: #ccc;
+stroke: #999;
+}
+.mouseeffect {
+opacity: 0.5;
+}
+  
+.svg-container {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	padding-bottom: 20%;
+	vertical-align: top;
+	overflow: hidden;
+	height: 40em;
+  }
+  .svg-content {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+  }
+
+/*------------------------------------------------Evolution Graph------------------------------------------------------*/
+.axis {
+    font: 10px sans-serif;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+.axis line{
+stroke: #706f6f;
+stroke-width: 0.5;
+shape-rendering: crispEdges;
+}
+/* axis contour */
+.axis path {
+stroke: #706f6f;
+stroke-width: 4;
+shape-rendering: crispEdges;
+}
+/* axis text */
+.axis text {
+fill: #2b2929;
+font-family: Georgia;
+font-size: 250%;
+}
+.serie_label {
+  fill: #2b2929;
+  font-family: Georgia;
+  font-size: 250%;
+}
+.line {
+	fill: none;
+	stroke: steelblue;
+	stroke-width: 1.5px;
+  }
+#linechar {
+	display: inline-block;
+	position: relative;
+	top: 0;
+	left: 0;
+	transform: none;
+  }
+  .svgContainer {
+	display: inline-block;
+	position: relative;
+	width: 60em;
+	height: 40em;
+  }
